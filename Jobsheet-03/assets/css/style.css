@@ -22,7 +22,7 @@ a:hover {
 header {
     background-color: #4CAF80;
     color: #fff;
-    padding: 1rem 1.5rem;
+    padding: 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -30,13 +30,21 @@ header {
 }
 
 header h1 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+}
+
+header nav {
+    display: none;
+    width: 100%;
+    order: 3;
+    margin-top: 1rem;
 }
 
 header nav ul {
     list-style: none;
     display: flex;
-    gap: 1.25rem;
+    flex-direction: column;
+    gap: 0.75rem;
 }
 
 header nav a {
@@ -46,16 +54,16 @@ header nav a {
 
 /* ===== Main Layout ===== */
 main {
-    max-width: 1000px;
-    margin: 2rem auto;
-    padding: 0 1.5rem;
+    width: 100%;
+    margin: 1.5rem auto;
+    padding: 0 1rem;
 }
 
 section {
     background-color: #fff;
     border-radius: 8px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
@@ -67,7 +75,7 @@ section h2 {
 /* ===== Kartu Statistik (CSS Grid) ===== */
 main section:nth-of-type(2) {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr;
     gap: 1rem;
 }
 
@@ -95,6 +103,11 @@ main section:nth-of-type(2) article p {
 }
 
 /* ===== Tabel ===== */
+
+.table-responsive {
+    overflow-x: auto;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -157,7 +170,6 @@ form label {
 form input,
 form select {
     width: 100%;
-    max-width: 400px;
     padding: 0.55rem 0.7rem;
     border: 1px solid #cdd4da;
     border-radius: 4px;
@@ -197,54 +209,66 @@ footer {
 }
 
 .nav-toggle-label {
-    display: none;
+    display: block;
     font-size: 1.6rem;
     color: #fff;
     cursor: pointer;
 }
 
+.nav-toggle:checked ~ nav {
+    display: block;
+}
+
 /* ===== Responsive Breakpoints ===== */
 
-/* Tablet ke bawah */
-@media (min-width: 900px) {
+/* Tablet */
+@media (min-width: 480px) {
+    header {
+        padding: 1rem 1.5rem;
+    }
+
+    header h1 {
+        font-size: 1.4rem;
+    }
+
+    main {
+        padding: 0 1.5rem;
+    }
+
+    section {
+        padding: 1.5rem;
+    }
+
     main section:nth-of-type(2) {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Mobile */
-@media (min-width: 480px) {
-    header {
-        position: relative;
-    }
-
+/* Desktop */
+@media (min-width: 900px) {
     .nav-toggle-label {
-        display: block;
+        display: none;
     }
 
     header nav {
-        display: none;
-        width: 100%;
-        order: 3;
-        margin-top: 1rem;
-    }
-
-    .nav-toggle:checked ~ nav {
         display: block;
+        width: auto;
+        order: initial;
+        margin-top: 0;
     }
 
     header nav ul {
-        flex-direction: column;
-        gap: 0.75rem;
+        flex-direction: row;
+        gap: 1.25rem;
+    }
+
+    main {
+        max-width: 1000px;
+        margin: 2rem auto;
     }
 
     main section:nth-of-type(2) {
-        grid-template-columns: 1fr;
-    }
-
-    form input,
-    form select {
-        max-width: 100%;
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
