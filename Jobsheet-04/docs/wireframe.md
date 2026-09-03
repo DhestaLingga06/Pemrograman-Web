@@ -13,19 +13,23 @@
 +--------------------------------------+
 
 +---------------------------------------------------------------+
-| SIMPUS-Mini     Beranda | Buku | Anggota | Peminjaman         |
-|                                      (Nama Petugas) | Logout  |
-|---------------------------------------------------------------|
+| SIMPUS-Mini    Beranda | Buku | Anggota | Peminjaman          |
+|                                    (Nama Petugas) | Logout    |
++---------------------------------------------------------------+
 |                                                               |
-|   [ Total Buku ]    [ Total Anggota ]    [ Sedang Dipinjam ]  |
+|  +---------------+  +---------------+  +-------------------+  |
+|  |   Total Buku  |  | Total Anggota |  | Sedang Dipinjam   |  |
+|  +---------------+  +---------------+  +-------------------+  |
 |                                                               |
-|   Aksi Cepat                                                  |
+|  Aksi Cepat                                                   |
 |                                                               |
-|   [ + Peminjaman Baru ]      [ + Pengembalian ]               |
+|  [ + Peminjaman Baru ]       [ + Pengembalian ]               |
 |                                                               |
-|   Transaksi Terbaru                                           |
-|   ----------------------------------------------------------- |
-|   Anggota        | Buku          | Tgl Pinjam   | Status      |
+|  Transaksi Terbaru                                            |
+|  +-----------------------------------------------------------+|
+|  | Anggota        | Buku          | Tgl Pinjam   | Status     |
+|  +-----------------------------------------------------------+|
+|                                                               |
 +---------------------------------------------------------------+
 
 +--------------------------------------+
