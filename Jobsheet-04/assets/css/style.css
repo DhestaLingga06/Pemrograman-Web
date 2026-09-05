@@ -257,3 +257,22 @@ footer {
         max-width: 1000px;
     }
 }
+
+/* === Tampilan Login Petugas === */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+main section {
+    width: 400px;
+    padding: 40px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+main section h2 {
+    text-align: center;
+}
