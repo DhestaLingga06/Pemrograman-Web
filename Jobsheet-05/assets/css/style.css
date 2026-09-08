@@ -157,6 +157,14 @@ form label {
     color: #444;
 }
 
+/* ===== Pesan Error Validasi ===== */
+.error {
+    display: block;
+    color: #d9534f;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
 form input,
 form select {
     width: 100%;
@@ -194,20 +202,30 @@ footer {
     overflow-x: auto;
 }
 
-/* ===== Hamburger Menu (checkbox hack) ===== */
-.nav-toggle {
-    display: none;
+/* ===== Kolom Pencarian ===== */
+.search-box {
+    margin-bottom: 1rem;
 }
 
+.search-box input {
+    width: 100%;
+    max-width: 320px;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #cdd4da;
+    border-radius: 4px;
+}
+
+/* ===== Hamburger Menu (checkbox hack) ===== */
 .nav-toggle-label {
     display: none;
     font-size: 1.6rem;
     color: #fff;
+    background: none;
+    border: none;
     cursor: pointer;
 }
 
 /* ===== Responsive Breakpoints ===== */
-
 /* Tablet ke bawah */
 @media (min-width: 900px) {
     main section:nth-of-type(2) {
@@ -216,7 +234,7 @@ footer {
 }
 
 /* Mobile */
-@media (min-width: 480px) {
+@media (max-width: 480px) {
     header {
         position: relative;
     }
@@ -232,8 +250,8 @@ footer {
         margin-top: 1rem;
     }
 
-    .nav-toggle:checked ~ nav {
-        display: block;
+    header nav.nav-open {
+    display: block;
     }
 
     header nav ul {
