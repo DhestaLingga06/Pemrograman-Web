@@ -28,7 +28,7 @@
             <form id="form-tambah">
                 <p>
                     <label for="judul">Judul</label><br>
-                    <input type="text" id="judul" name="judul" required>
+                    <input type="text" id="judul" name="judul">
                 </p>
                 <p>
                     <label for="pengarang">Pengarang</label><br>
@@ -40,7 +40,9 @@
                 </p>
                 <p>
                     <label for="isbn">ISBN</label><br>
-                    <input type="text" id="isbn" name="isbn">
+                    <input type="text" id="isbn" name="isbn"
+                           pattern="[0-9-]+"
+                           title="ISBN hanya boleh berisi angka dan tanda hubung (-)">
                 </p>
                 <p>
                     <label for="stok">Stok</label><br>
