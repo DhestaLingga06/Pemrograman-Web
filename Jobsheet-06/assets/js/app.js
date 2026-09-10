@@ -31,6 +31,8 @@ function updateTableCounter() {
 // tombol .btn-hapus belum tentu ada saat DOMContentLoaded.
 function initHapusConfirm() {
     document.addEventListener("click", function (e) {
+        console.log(e.target);
+        
         const btn = e.target.closest(".btn-hapus");
         if (!btn) return;
 
