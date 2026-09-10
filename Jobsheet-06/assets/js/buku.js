@@ -38,3 +38,6 @@ async function muatDaftarBuku() {
     }
 }
 document.addEventListener("DOMContentLoaded", muatDaftarBuku);
+
+// Tombol Muat Ulang
+document.getElementById("btn-muat-ulang").addEventListener("click", muatDaftarBuku);
