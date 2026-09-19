@@ -6,7 +6,19 @@ require __DIR__ . '/../includes/koneksi.php';
 $flash = $_SESSION['flash'] ?? null;
 unset($_SESSION['flash']);
 
-$daftarBuku = $pdo->query("SELECT * FROM buku ORDER BY id DESC")->fetchAll(PDO::FETCH_ASSOC);
+$keyword = trim($_GET['keyword'] ?? '');
+
+$stmt = $pdo->prepare(
+    "SELECT * FROM buku
+     WHERE judul ILIKE :keyword
+     ORDER BY id DESC"
+);
+
+$stmt->execute([
+    'keyword' => '%' . $keyword . '%'
+]);
+
+$daftarBuku = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
         <section>
             <h2>Daftar Buku</h2>
@@ -15,10 +27,12 @@ $daftarBuku = $pdo->query("SELECT * FROM buku ORDER BY id DESC")->fetchAll(PDO::
                 <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo $flash['pesan']; ?></p>
             <?php endif; ?>
 
-            <div class="search-box">
+            <form method="GET" class="search-box">
                 <label for="search-input">Cari Judul Buku</label>
-                <input type="text" id="search-input" placeholder="Ketik judul buku...">
-            </div>
+                <input type="text" id="search-input" name="keyword" placeholder="Ketik judul buku..."
+                 value="<?php echo htmlspecialchars($keyword); ?>">
+                <button type="submit">Cari</button>
+            </form>
 
             <div class="table-responsive">
             <table>
@@ -35,7 +49,7 @@ $daftarBuku = $pdo->query("SELECT * FROM buku ORDER BY id DESC")->fetchAll(PDO::
                 <tbody>
                     <?php if (empty($daftarBuku)): ?>
                     <tr>
-                        <td colspan="5">Belum ada data buku. Silakan tambah lewat menu "Tambah Buku".</td>
+                        <td colspan="6">Belum ada data buku. Silakan tambah lewat menu "Tambah Buku".</td>
                     </tr>
                     <?php else: ?>
                         <?php foreach ($daftarBuku as $buku): ?>
