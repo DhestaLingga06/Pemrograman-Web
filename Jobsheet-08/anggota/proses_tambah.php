@@ -31,13 +31,25 @@ $stmt = $pdo->prepare(
      RETURNING id"
 );
 
-$stmt->execute([
-    'nama' => $nama,
-    'no_anggota' => $noAnggota,
-    'alamat' => $alamat,
-    'no_hp' => $noHp,
-]);
+try {
+    $stmt->execute([
+        'nama' => $nama,
+        'no_anggota' => $noAnggota,
+        'alamat' => $alamat,
+        'no_hp' => $noHp,
+    ]);
 
-$_SESSION['flash'] = ['type' => 'success', 'pesan' => 'Anggota berhasil ditambahkan.'];
+    $_SESSION['flash'] = [
+        'type' => 'success', 
+        'pesan' => 'Anggota berhasil ditambahkan.'
+    ];
+
+} catch (PDOException $e) {
+    $_SESSION['flash'] = [
+        'type' => 'error',
+        'pesan' => 'No. Anggota sudah dipakai, gunakan nomor lain.'
+    ];
+}
+
 header('Location: list.php');
 exit;
