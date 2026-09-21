@@ -342,3 +342,10 @@ footer {
     background-color: #f8d7da;
     color: #721c24;
 }
+
+/* Ukuran tombol Hapus */
+td form.form-hapus button.btn-hapus {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+    background-color: #4CAF80;
+}
