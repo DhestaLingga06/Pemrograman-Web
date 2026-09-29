@@ -12,6 +12,8 @@ $stmt->execute(['username' => $username]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($user && password_verify($password, $user['password'])) {
+    unset($_SESSION['login_gagal'][$username]);
+
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['nama'] = $user['nama'];
     $_SESSION['role'] = $user['role'];
@@ -24,6 +26,25 @@ if ($user && password_verify($password, $user['password'])) {
     exit;
 }
 
-$_SESSION['flash'] = ['type' => 'error', 'pesan' => 'Username atau password salah.'];
+if (!isset($_SESSION['login_gagal'][$username])) {
+    $_SESSION['login_gagal'][$username] = 0;
+}
+
+$_SESSION['login_gagal'][$username]++;
+
+$jumlah_gagal = $_SESSION['login_gagal'][$username];
+
+if ($jumlah_gagal >= 3) {
+    $_SESSION['flash'] = [
+        'type' => 'error',
+        'pesan' => 'Login gagal 3 kali. Silakan coba lagi nanti.'
+    ];
+} else {
+    $_SESSION['flash'] = [
+        'type' => 'error',
+        'pesan' => 'Username atau password salah.'
+    ];
+}
+
 header('Location: login.php');
 exit;
