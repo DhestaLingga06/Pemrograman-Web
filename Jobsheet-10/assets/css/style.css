@@ -361,3 +361,13 @@ td form.form-hapus button.btn-hapus {
     font-size: 0.85rem;
     background-color: #4CAF80;
 }
+
+.remember-me label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.remember-me input {
+    width: auto;
+}
