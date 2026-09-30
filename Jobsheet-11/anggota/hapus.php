@@ -1,5 +1,7 @@
 <?php
 require __DIR__ . '/../includes/auth.php';
+require __DIR__ . '/../includes/csrf.php';
+
 if ($_SESSION['role'] !== 'admin') {
     $_SESSION['flash'] = [
         'type' => 'error',
@@ -15,6 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: list.php');
     exit;
 }
+
+csrf_verify();
 
 $id = $_POST['id'] ?? null;
 if ($id) {

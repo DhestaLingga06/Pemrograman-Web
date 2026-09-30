@@ -1,7 +1,10 @@
 <?php
+require __DIR__ . '/../includes/auth.php';
 $page_title = "Daftar Anggota";
 include __DIR__ . '/../includes/header.php';
 require __DIR__ . '/../includes/koneksi.php';
+require __DIR__ . '/../includes/helpers.php';
+require __DIR__ . '/../includes/csrf.php';
 
 $flash = $_SESSION['flash'] ?? null;
 unset($_SESSION['flash']);
@@ -40,7 +43,7 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
             <form method="get" class="search-box">
                 <label for="search-input">Cari Nama Anggota</label>
                 <input type="text" id="search-input" name="q"
-                       value="<?php echo htmlspecialchars($keyword); ?>"
+                       value="<?php echo e($keyword); ?>"
                        placeholder="Ketik nama anggota...">
                 <button type="submit">Cari</button>
             </form>
@@ -64,14 +67,15 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
                     <?php else: ?>
                         <?php foreach ($daftarAnggota as $anggota): ?>
                         <tr>
-                            <td><?php echo $anggota['no_anggota']; ?></td>
-                            <td><?php echo $anggota['nama']; ?></td>
-                            <td><?php echo $anggota['alamat']; ?></td>
-                            <td><?php echo $anggota['no_hp']; ?></td>
+                            <td><?php echo e($anggota['no_anggota']); ?></td>
+                            <td><?php echo e($anggota['nama']); ?></td>
+                            <td><?php echo e($anggota['alamat']); ?></td>
+                            <td><?php echo e($anggota['no_hp']); ?></td>
                             <td>
                                 <a href="edit.php?id=<?php echo $anggota['id']; ?>" class="btn-edit">Edit</a>
                                 <form class="form-hapus" method="post" action="hapus.php">
                                     <input type="hidden" name="id" value="<?php echo $anggota['id']; ?>">
+                                     <?php echo csrf_field(); ?>
                                     <button type="submit" class="btn-hapus">Hapus</button>
                                 </form>
                             </td>

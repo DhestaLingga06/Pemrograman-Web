@@ -2,6 +2,8 @@
 $page_title = "Daftar Buku";
 include __DIR__ . '/../includes/header.php';
 require __DIR__ . '/../includes/koneksi.php';
+require __DIR__ . '/../includes/helpers.php';
+require __DIR__ . '/../includes/csrf.php';
 
 $flash = $_SESSION['flash'] ?? null;
 unset($_SESSION['flash']);
@@ -40,7 +42,7 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
                 <label for="search-input">Cari Judul Buku</label>
                 <input type="text" id="search-input" name="q"
                        placeholder="Ketik judul buku..."
-                       value="<?php echo htmlspecialchars($keyword); ?>">
+                       value="<?php echo e($keyword); ?>">
                 <button type="submit">Cari</button>
             </form>
 
@@ -64,15 +66,16 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
                     <?php else: ?>
                         <?php foreach ($daftarBuku as $buku): ?>
                         <tr>
-                            <td><?php echo $buku['judul']; ?></td>
-                            <td><?php echo $buku['pengarang']; ?></td>
+                            <td><?php echo e($buku['judul']); ?></td>
+                            <td><?php echo e($buku['pengarang']); ?></td>
                             <td><?php echo $buku['tahun']; ?></td>
                             <td><?php echo $buku['stok']; ?></td>
-                            <td><?php echo $buku['tanggal_ditambahkan']; ?></td>
+                            <td><?php echo e($buku['tanggal_ditambahkan']); ?></td>
                             <td>
                                 <a href="edit.php?id=<?php echo $buku['id']; ?>" class="btn-edit">Edit</a>
                                 <form class="form-hapus" method="post" action="hapus.php">
                                     <input type="hidden" name="id" value="<?php echo $buku['id']; ?>">
+                                    <?php echo csrf_field(); ?>
                                     <button type="submit" class="btn-hapus">Hapus</button>
                                 </form>
                             </td>

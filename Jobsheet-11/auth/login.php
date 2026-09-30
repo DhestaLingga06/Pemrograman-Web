@@ -2,6 +2,9 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+require __DIR__ . '/../includes/csrf.php';
+
 if (isset($_SESSION['user_id'])) {
     header('Location: ../index.php');
     exit;
@@ -21,6 +24,7 @@ unset($_SESSION['flash']);
             <?php endif; ?>
 
             <form method="post" action="proses_login.php">
+                <?php echo csrf_field(); ?>
                 <p>
                     <label for="username">Username</label><br>
                     <input type="text" id="username" name="username" required>
