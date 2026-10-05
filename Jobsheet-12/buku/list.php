@@ -38,12 +38,9 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
 
             <form method="GET" class="search-box">
                 <label for="search-input">Cari Judul Buku</label>
-                <input type="text" id="search-input" name="q"
-                       placeholder="Ketik judul buku..."
-                       value="<?php echo e($keyword); ?>">
+                <input type="text" id="search-input" name="q" placeholder="Ketik judul buku..." value="<?php echo e($keyword); ?>">
                 <button type="submit">Cari</button>
             </form>
-
             <div class="table-responsive">
             <table>
                 <thead>
@@ -83,11 +80,11 @@ $totalPages = max(1, (int) ceil($totalRows / $perPage));
                 </tbody>
             </table>
             </div>
-                        <div class="pagination">
+            <div class="pagination">
                 <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                    <a href="?page=<?php echo $i; ?>&q=<?php echo urlencode($keyword); ?>">
+                <a href="?page=<?php echo $i; ?>&q=<?php echo urlencode($keyword); ?>">
                         <?php echo $i; ?>
-                    </a>
+                </a>
                 <?php endfor; ?>
             </div>
         </section>
