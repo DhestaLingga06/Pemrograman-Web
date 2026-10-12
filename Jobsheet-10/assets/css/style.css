@@ -181,9 +181,9 @@ td form.form-hapus {
 }
 
 .pagination a.active {
-    background-color: #1d5b8a;
+    background-color: #4CAF80;
     color: #fff;
-    border-color: #1d5b8a;
+    border-color: #4CAF80;
 }
 
 .search-box form {
