@@ -70,7 +70,7 @@ section h2 {
 /* ===== Kartu Statistik (CSS Grid) ===== */
 main section:nth-of-type(2) {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 1rem;
 }
 
@@ -209,14 +209,14 @@ footer {
 /* ===== Responsive Breakpoints ===== */
 
 /* Tablet ke bawah */
-@media (min-width: 900px) {
+@media (max-width: 900px) {
     main section:nth-of-type(2) {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 /* Mobile */
-@media (min-width: 480px) {
+@media (max-width: 480px) {
     header {
         position: relative;
     }
@@ -259,20 +259,20 @@ footer {
 }
 
 /* === Tampilan Login Petugas === */
-main {
+main.login-page {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
 }
 
-main section {
+main.login-page section {
     width: 400px;
     padding: 40px;
     border: 1px solid #ccc;
     border-radius: 8px;
 }
 
-main section h2 {
+main.login-page section h2 {
     text-align: center;
 }
