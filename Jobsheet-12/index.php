@@ -24,7 +24,7 @@ $totalDipinjam = $pdo->query("SELECT COUNT(*) FROM peminjaman WHERE status = 'di
             </article>
             <article>
                 <h3>Sedang Dipinjam</h3>
-                <p>0</p>
+                <p><?php echo $totalDipinjam; ?></p>
             </article>
         </section>
 <?php include __DIR__ . '/includes/footer.php'; ?>
